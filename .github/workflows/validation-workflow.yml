@@ -15,9 +15,9 @@ on:
     secrets:
       SECRET_URL_PATH:
         required: true
-      DOCKER_HUB_USERNAME:
+      DOCKER_HUB_UN:
         required: true
-      DOCKER_HUB_PASSWORD:
+      DOCKER_HUB_PASS:
         required: true     
 jobs:
   deploy:
@@ -31,12 +31,12 @@ jobs:
       BASE_BRANCH: ${{ inputs.BASE_BRANCH }}
       FORCE_SHOW_SPINNER: true
 
-    #passing the docker container creds to load the dependencies
+    #passing the docker hub creds to load the dependencies
     container:
       image: ranadeepbhaduri22/devops
       credentials:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        username: ${{ secrets.DOCKER_HUB_UN }}
+        password: ${{ secrets.DOCKER_HUB_PASS }}
 
     #steps represent a sequence of tasks that will be executed as part of the job.
     steps:
