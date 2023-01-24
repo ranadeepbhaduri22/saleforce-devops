@@ -15,9 +15,9 @@ on:
     secrets:
       SECRET_URL_PATH:
         required: true
-      DOCKER_HUB_UN:
+      DOCKER_HUB_USERNAME:
         required: true
-      DOCKER_HUB_PASS:
+      DOCKER_HUB_PASSWORD:
         required: true     
 jobs:
   deploy:
