@@ -1,0 +1,175 @@
+<apex:page sidebar="false" showHeader="false">
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Loruki | Cloud Hosting For Everyone</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="{!$Resource.CustomPageCss}"/>
+
+    </head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <body>
+        <!-- Navbar section -->
+        <div class="navbar">
+            <div class="nav-container">
+                <h1 class="logo">Loruki.</h1>
+                <nav>
+                    <ul>
+                        <li class="navbar-items"><a href="#">Home</a></li>
+                        <li class="navbar-items"><a href="#">Features</a></li>
+                        <li class="navbar-items"><a href="#">Docs</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    
+        <!-- Showcase section -->
+        <div class="showcase-section grid">
+            <div class="showcase-container">
+                <h1>Easier Deployment</h1>
+                <p>Deploy web apps of all kinds, from large scale enterprise APIs to static websites for individuals. Fill out the form to try a demo of our platform.</p>
+                <div class="read-more-btn">
+                    <a href="features.html">Read More</a>
+                </div>
+            </div>
+            <div class="showcase-form card">
+                <h2>Request A Demo</h2>
+                <form>
+                    <div class="form-fields">
+                        <input type="text" name="name" placeholder="Name"/>
+                    </div>
+                    <div class="form-fields">
+                        <input type="text" name="company" placeholder="Company Name"/>
+                    </div>
+                    <div class="form-fields">
+                        <input type="email" name="email" placeholder="Email"/>
+                    </div>
+                    <button class="btn">Send</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Stats section -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <h3 class="stats-heading my-3">Welcome to the best platform for building applications of all types with modern architecture and scaling</h3>
+            </div>
+            <div class="stats-item-container my-1">
+                <div class="stats-items">
+                    <i class="fas fa-server fa-3x"></i>
+                    <h1>1,01312</h1>
+                    <h3 style="color: blue;">Deployments</h3>
+                </div>
+                <div class="stats-items">
+                    <i class="fas fa-upload fa-3x"></i>
+                    <h1>543 TB</h1>
+                    <h3 style="color: blue;">Published</h3>
+                </div>
+                <div class="stats-items">
+                    <i class="fas fa-project-diagram fa-3x"></i>
+                    <h1>3,242,342</h1>
+                    <h3 style="color: blue;">Projects</h3>
+                </div>
+            </div>
+        </div>
+    
+        <!-- CLI section -->
+        <div class="cli-section my-1">
+            <div class="cli-image">
+                <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/cli.png?raw=true" alt="CLI Image"/>
+            </div>
+            <div class="cli-cards">
+                <div class="cli-cards-items">
+                    Easy to use, cross platform CLI
+                </div>
+                <div class="cli-cards-items">
+                    Deploy in seconds
+                </div>
+            </div>
+        </div>
+        <!-- Cloud Section -->
+        <div class="cloud-section">
+            <div class="cloud-section-1">
+                <h1>Extreme Cloud Hosting</h1>
+                <p>Cloud hosting like you have never seen. Fast, efficient and scalable</p>
+                <div class="cloud-section-1-read-more">
+                    <a href="/">Read More</a>
+                </div>
+            </div>
+            <div class="cloud-section-2">
+                <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/cloud.png?raw=true" alt="Cloud Image"/>
+            </div>
+        </div>
+        
+        <!-- Languages section -->
+        <div class="language-section">
+            <h1 class="language-header text-center my-1">Supported Languages</h1>
+            <div class="language-container my-1">
+                <div class="language-cards">
+                    <h4>Node.js</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/node.png?raw=true"/>
+                </div>
+                <div class="language-cards">
+                    <h4>Python</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/python.png?raw=true"/>
+                </div>
+                <div class="language-cards">
+                    <h4>C#</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/csharp.png?raw=true"/>
+                </div>
+                <div class="language-cards">
+                    <h4>Ruby</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/ruby.png?raw=true"/>
+                </div>
+                <div class="language-cards">
+                    <h4>PHP</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/php.png?raw=true"/>
+                </div>
+                <div class="language-cards">
+                    <h4>Scala</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/scala.png?raw=true"/>
+                </div>
+                <div class="language-cards">
+                    <h4>Clojure</h4>
+                    <img src="https://github.com/bradtraversy/loruki-website/blob/master/images/logos/clojure.png?raw=true"/>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer section -->
+        <div class="footer-container my-1">
+            <div class="footer-container-1">
+                <h1>Loruki</h1>
+                <h4>Copyright &copy; 2020</h4>
+            </div>
+            <div class="footer-container-1">
+                <ul>
+                    <li class="footer-items"><a href="index.html">Home</a></li>
+                    <li class="footer-items"><a href="features.html">Features</a></li>
+                    <li class="footer-items"><a href="docs.html">Docs</a></li>
+                </ul>
+            </div>
+            <div class="footer-container-2">
+                <i class="fab fa-github fa-3x"></i>
+                <i class="fab fa-facebook fa-3x"></i>
+                <i class="fab fa-instagram fa-3x"></i>
+                <i class="fab fa-twitter fa-3x"></i>
+            </div>
+        </div>
+    </body>
+    
+    </html>
+</apex:page>

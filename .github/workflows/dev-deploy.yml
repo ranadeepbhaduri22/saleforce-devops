@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+name: dev-deploy
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request events but only for the dev branch
+  pull_request:
+    branches: [ dev ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    #utilizing reusable workflow from provided path
+    uses: ./.github/workflows/validation-workflow.yml
+    #passing inputs to the reusable workflow.
+    with:
+      SOURCE_ORG_ALIAS: CI
+      BASE_BRANCH: ci
+    #passing secrets to the reusable workflow.
+    secrets:
+      SECRET_URL_PATH: ${{secrets.CI_ORG_AUTH_URL}}
+      DOCKER_HUB_UN: ${{secrets.DOCKER_HUB_USERNAME}}
+      DOCKER_HUB_PASS: ${{secrets.DOCKER_HUB_PASSWORD}}
+  
+  # Deploy components to DEV Org
+  deploy-dev:
+    needs: build
+
+    #utilizing reusable workflow from provided path
+    uses: ./.github/workflows/validation-workflow.yml
+    #passing inputs to the reusable workflow.
+    with:
+      SOURCE_ORG_ALIAS: DEV
+      BASE_BRANCH: dev
+    #passing secrets to the reusable workflow.
+    secrets:
+      SECRET_URL_PATH: ${{secrets.DEV_ORG_AUTH_URL}}
+      DOCKER_HUB_UN: ${{secrets.DOCKER_HUB_USERNAME}}
+      DOCKER_HUB_PASS: ${{secrets.DOCKER_HUB_PASSWORD}}
