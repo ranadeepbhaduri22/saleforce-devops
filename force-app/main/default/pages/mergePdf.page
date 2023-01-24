@@ -1,0 +1,83 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" docType="html-5.0" controller="PdfMergingHandler">
+    <html>
+
+    <head>
+        <!-- META TAGS -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1" />
+        <title>CK PDFs Merging Tool</title>
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <!-- CUSTOM CSS -->
+        <apex:stylesheet value="{!URLFOR($Resource.mergePdfResource, '/assets/css/portal/style.min.css')}" />
+        <!-- PDF LIB JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" />
+    </head>
+
+    <body>
+        <header>
+            <div class="header-container">
+                <div class="header-wrapper">
+                    <div class="company-logo">
+                        <apex:image url="{!$Resource.ckLogo}" width="180" />
+                    </div>
+                    <div class="company-website">
+                        <a href="https://cloudkaptan.com/">cloudkaptan.com</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="container-wrapper">
+                    <div class="heading">
+                        <h2>Merge pdf documents</h2>
+                    </div>
+                    <div class="content">
+                        <div class="pdf-select-container">
+                            <div class="title">
+                                <h3>Search and select pdfs for merging</h3>
+                            </div>
+                            <div class="pdf-search">
+                                <input type="text" id="serachDoc" placeholder="Choose pdf…" />
+                            </div>
+                            <div class="selected-pdf-list">
+                                <div class="pdf-list">
+                                    <div class="blank">No document added yet</div>
+                                </div>
+                            </div>
+                            <div class="btn-container">
+                                <div class="btn btn-primary">
+                                    <div class="action-wrapper">
+                                        <span class="btn-text">Merge pdfs</span>
+                                        <i class="fa fa-long-arrow-right" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pdf-view-container">
+                            <div class="title">
+                                <h3>Merged pdf document</h3>
+                            </div>
+                            <div class="pdf-container">
+                                <iframe id="mergedPdf" src="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-container">
+                <span class="copyright">© Copyright -
+                    <a href="https://cloudkaptan.com/">CloudKaptan</a>
+                </span>
+            </div>
+        </footer>
+        <!-- CUSTOM JS -->
+        <apex:includeScript value="{!URLFOR($Resource.mergePdfResource, '/assets/js/portalScripts.js')}" />
+    </body>
+
+    </html>
+</apex:page>

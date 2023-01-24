@@ -1,0 +1,70 @@
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+name: validation-workflow
+on:
+  # This workflow contains a single job called "deploy"
+  workflow_call:
+    #specifying the required inputs for this reusable workflow
+    inputs:
+      SOURCE_ORG_ALIAS:
+        required: true
+        type: string
+      BASE_BRANCH:
+        required: true
+        type: string
+    #specifying the required secrets for this reusable workflow
+    secrets:
+      SECRET_URL_PATH:
+        required: true
+      DOCKER_HUB_UN:
+        required: true
+      DOCKER_HUB_PASS:
+        required: true     
+jobs:
+  deploy:
+    name: ${{ inputs.SOURCE_ORG_ALIAS }}
+    runs-on: ubuntu-latest
+
+    #setting some environment variables so that it can be utilized in upcoming shell scripts
+    env:
+      SECRET_URL_PATH: ${{ secrets.SECRET_URL_PATH }}
+      SOURCE_ORG_ALIAS: ${{ inputs.SOURCE_ORG_ALIAS }}
+      BASE_BRANCH: ${{ inputs.BASE_BRANCH }}
+      FORCE_SHOW_SPINNER: true
+
+    #passing the docker hub creds to load the dependencies
+    container:
+      image: ranadeepbhaduri22/devops
+      credentials:
+        username: ${{ secrets.DOCKER_HUB_UN }}
+        password: ${{ secrets.DOCKER_HUB_PASS }}
+
+    #steps represent a sequence of tasks that will be executed as part of the job.
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Authenticate The Org and 
+      - name: Populate Auth File And Authorize
+        run:  chmod +x ./.github/scripts/authenticateorg.sh && ./.github/scripts/authenticateorg.sh
+        shell: bash
+
+      # Generate Delta Package
+      - name: Generate Delta Packages
+        run: chmod +x ./.github/scripts/generatedeltapkg.sh && ./.github/scripts/generatedeltapkg.sh
+      
+      # Instantiate PMD Check for the components
+      - name: PMD Check
+        run: chmod +x ./.github/scripts/scanner.sh && ./.github/scripts/scanner.sh
+        if: ${{ env.SOURCE_ORG_ALIAS == 'CI' }}
+      
+      # Validate the components against CI Org
+      - name: Validate
+        run: chmod +x ./.github/scripts/validateComponents.sh && ./.github/scripts/validateComponents.sh
+        shell: bash
+
+      # Quick Deploy if validation is success
+      - name: Quick Deploy
+        run: chmod +x ./.github/scripts/quickdeploy.sh && ./.github/scripts/quickdeploy.sh
+        shell: bash
+        if: ${{ env.SOURCE_ORG_ALIAS != 'CI'}}
